@@ -31,7 +31,7 @@ import streamlit as st
 
 cars = pd.read_csv('vehicles_us.csv')
 
-display(cars.info())
+#display(cars.info())
 
 
 # In[7]:
