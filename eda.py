@@ -37,13 +37,13 @@ cars = pd.read_csv('vehicles_us.csv')
 # In[7]:
 
 
-print(cars.columns)
+#print(cars.columns)
 
 
 # In[8]:
 
 
-st.header('Market of used cars. Original data')
+st.header('Market of used cars in US')
 st.write("""
 #### Filter the data below to see the ads by manufacturer """)
 show_new_cars = st.checkbox('Include new cars from dealers')
@@ -78,34 +78,34 @@ make_choice_mod
 # In[13]:
 
 
-min_price, max_price = int(cars['price'].min()), int(cars['price'].max())
+min_day_list, max_day_list = int(cars['days_listed'].min()), int(cars['days_listed'].max())
 
-price_range = st.slider('Price Range', value=(min_price, max_price), min_value = min_price, max_value = max_price)
+days_range = st.slider('Days Listed', value=(min_day_list, max_day_list), min_value = min_day_list, max_value = max_day_list)
 
 
 # In[14]:
 
 
-price_range
+days_range
 
 
 # In[15]:
 
 
-actual_range = list(range(price_range[0], price_range[1] +1))
+actual_range = list(range(days_range[0], days_range[1] +1))
 
 
 # In[16]:
 
 
-filtered_type = cars[(cars.model == make_choice_mod) & (cars.model_year.isin(list(actual_range)))]
+filtered_type = cars[(cars.model == make_choice_mod) & (cars.days_listed.isin(list(actual_range)))]
 st.table(filtered_type)
 
 
 # In[17]:
 
 
-cars
+#cars
 
 
 # In[18]:
