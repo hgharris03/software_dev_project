@@ -67,12 +67,13 @@ if not show_new_cars:
 
 manufacturer_choice = cars['model'].unique()
 make_choice_mod = st.selectbox('Select model:', manufacturer_choice)
-
+condition_choice = cars['condition'].unique()
+make_condition = st.selectbox('Select condition: ', condition_choice)
 
 # In[12]:
 
 
-make_choice_mod
+#make_choice_mod
 
 
 # In[13]:
@@ -86,7 +87,7 @@ days_range = st.slider('Days Listed', value=(min_day_list, max_day_list), min_va
 # In[14]:
 
 
-days_range
+#days_range
 
 
 # In[15]:
@@ -98,7 +99,7 @@ actual_range = list(range(days_range[0], days_range[1] +1))
 # In[16]:
 
 
-filtered_type = cars[(cars.model == make_choice_mod) & (cars.days_listed.isin(list(actual_range)))]
+filtered_type = cars[(cars.model == make_choice_mod) & (cars['days_listed'].isin(list(actual_range))) & (cars.condition == make_condition)]
 st.table(filtered_type)
 
 
@@ -119,7 +120,7 @@ pio.templates.default = "plotly"
 # In[19]:
 
 
-list_for_hist = ['condition', 'transmission', 'type', 'color']
+list_for_hist = ['condition', 'transmission', 'type', 'paint_color']
 
 choice_for_hist = st.selectbox('Split for price distribution', list_for_hist)
 
@@ -133,7 +134,7 @@ st.plotly_chart(fig1)
 # In[20]:
 
 
-fig1
+#fig1
 
 
 # In[21]:
@@ -152,7 +153,7 @@ cars['age_category'] = cars['age'].apply(age_category)
 # In[22]:
 
 
-cars['age_category'].head()
+#cars['age_category'].head()
 
 
 # In[23]:
@@ -175,7 +176,7 @@ st.plotly_chart(fig2)
 # In[24]:
 
 
-fig2
+#fig2
 
 
 # In[ ]:
