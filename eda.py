@@ -261,8 +261,6 @@ st.plotly_chart(fig2)
 
 # In[48]:
 
-
-choice_mod = st.selectbox('Select model:', model_choice)
 condition_choice = cars['condition'].unique()
 make_condition = st.selectbox('Select condition: ', condition_choice)
 
@@ -284,7 +282,7 @@ actual_range = list(range(days_range[0], days_range[1] +1))
 # In[51]:
 
 
-filtered_type = cars[(cars.model == make_choice_mod) & (cars['days_listed'].isin(list(actual_range))) & cars.condition == make_condition]
+filtered_type = cars[(cars.model == choice_mod) & (cars['days_listed'].isin(list(actual_range))) & cars.condition == make_condition]
 
 
 # In[37]:
