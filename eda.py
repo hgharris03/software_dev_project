@@ -233,7 +233,7 @@ st.plotly_chart(fig1)
 # In[44]:
 
 
-fig1
+#fig1
 
 
 # In[46]:
@@ -256,14 +256,13 @@ st.plotly_chart(fig2)
 # In[47]:
 
 
-fig2
+#fig2
 
 
 # In[48]:
 
 
-manufacturer_choice = cars['model'].unique()
-make_choice_mod = st.selectbox('Select model:', manufacturer_choice)
+choice_mod = st.selectbox('Select model:', model_choice)
 condition_choice = cars['condition'].unique()
 make_condition = st.selectbox('Select condition: ', condition_choice)
 
