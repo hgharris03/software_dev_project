@@ -291,9 +291,7 @@ filtered_type = cars[(cars.model == make_choice_mod) & (cars['days_listed'].isin
 st.write("""
 #### Filter the data below to see the ads by manufacturer """)
 
-show_table = st.checkbox('Show Cars for Sale')
-if show_table:
-    st.table(filtered_type)
+st.table(filtered_type)
 
 
 # # Conclusion
