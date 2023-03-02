@@ -260,6 +260,9 @@ st.plotly_chart(fig2)
 
 
 # In[48]:
+st.write("""
+#### Filter the data below to see the ads by manufacturer """)
+
 manufacturer_choice = cars['model'].unique()
 make_choice_mod = st.selectbox('Select model for ads:', manufacturer_choice)
 
@@ -284,12 +287,11 @@ actual_range = list(range(days_range[0], days_range[1] +1))
 # In[51]:
 
 
-filtered_type = cars[(cars.model == make_choice_mod) & (cars['days_listed'].isin(list(actual_range))) & cars.condition == make_condition]
+filtered_type = cars[(cars.model == make_choice_mod) & (cars['days_listed'].isin(list(actual_range))) & (cars.condition == make_condition)]
 
 
 # In[37]:
-st.write("""
-#### Filter the data below to see the ads by manufacturer """)
+
 
 st.table(filtered_type)
 
