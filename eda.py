@@ -38,15 +38,15 @@ from matplotlib import pyplot as plt
 
 cars = pd.read_csv('vehicles_us.csv')
 
-display(cars.info())
-display(cars.head())
+#display(cars.info())
+#display(cars.head())
 
 
 # In[6]:
 
 
 cars['date_posted'] = pd.to_datetime(cars['date_posted'], format = '%Y-%m-%d')
-print('min:', cars['date_posted'].min(), 
+#print('min:', cars['date_posted'].min(), 
       'max:', cars['date_posted'].max())
 
 
@@ -72,7 +72,7 @@ age_cat_sort = ['<5', '5-10', '10-20', '>20']
 # In[8]:
 
 
-display(cars['price'].describe())
+#display(cars['price'].describe())
 
 
 # It is unlikely that a car will sell for $1, especially when some of these vehicles are in good condition. I've deciced to drop these rows so price comparisons and analysis will be more accurate. 
@@ -81,15 +81,15 @@ display(cars['price'].describe())
 
 
 cars = cars[cars['price'] != 1]
-print(cars.info())
-print(cars['price'].describe())
+#print(cars.info())
+#print(cars['price'].describe())
 
 
 # In[10]:
 
 
-print(cars['cylinders'].describe())
-print(cars['cylinders'].unique())
+#print(cars['cylinders'].describe())
+#print(cars['cylinders'].unique())
 
 
 # The median and the mean cylinder the vehicles have is 6 so I will fill the empty values with 6.
@@ -98,40 +98,40 @@ print(cars['cylinders'].unique())
 
 
 cars['cylinders'] = cars['cylinders'].fillna(6)
-print(cars['cylinders'].describe())
-print(cars['cylinders'].unique())
+#print(cars['cylinders'].describe())
+#print(cars['cylinders'].unique())
 
 
 # In[12]:
 
 
-print(cars['odometer'].describe())
+#print(cars['odometer'].describe())
 cars['odometer'] = cars['odometer'].fillna(114160.5)
 
 
 # In[13]:
 
 
-print(cars['odometer'].describe())
+#print(cars['odometer'].describe())
 
 
 # In[14]:
 
 
-print(cars['paint_color'].unique())
+#print(cars['paint_color'].unique())
 cars['paint_color'] = cars['paint_color'].fillna('none specified')
 
 
 # In[15]:
 
 
-print(cars['paint_color'].unique())
+#print(cars['paint_color'].unique())
 
 
 # In[16]:
 
 
-print(cars['is_4wd'].unique())
+#print(cars['is_4wd'].unique())
 
 
 # The column for 4wd is 1 for yes, the rest of the values are blank. I am going to use 'yes' or 'no' for better usibility. 
@@ -141,7 +141,7 @@ print(cars['is_4wd'].unique())
 
 cars['is_4wd'] = cars['is_4wd'].replace({1:'yes'})
 cars['is_4wd'] = cars['is_4wd'].fillna('no')
-print(cars['is_4wd'].unique())
+#print(cars['is_4wd'].unique())
 
 
 # In[18]:
@@ -149,13 +149,13 @@ print(cars['is_4wd'].unique())
 
 #print(cars.columns)
 cars['model_year'] = cars['model_year'].round(0)
-display(cars.head())
+#display(cars.head())
 
 
 # In[19]:
 
 
-print(cars.info())
+#print(cars.info())
 
 
 # Finding the model of car with the most ads. 
@@ -164,14 +164,14 @@ print(cars.info())
 
 
 model_cars_sorted = cars.groupby('model')['price'].count().sort_values(ascending = False)
-print(model_cars_sorted)
+#print(model_cars_sorted)
 
 
 # In[21]:
 
 
-model_cars_sorted.head(25).plot(kind = 'bar', xlabel = 'Car Model', ylabel = 'Count', title = 'Models with the most ads')
-plt.show()
+#model_cars_sorted.head(25).plot(kind = 'bar', xlabel = 'Car Model', ylabel = 'Count', title = 'Models with the most ads')
+#plt.show()
 
 
 # Since Ford -150 is the most popular car, I am going to do further analysis on this model. 
@@ -179,24 +179,26 @@ plt.show()
 # In[24]:
 
 
-ford_f150 = cars[cars['model'] == 'ford f-150']
-ford_f150['age'].hist(bins = 100)
-plt.title('Age distribution of Ford F150')
-plt.xticks([0,10,20,30,40,50,60,70,80,90,100])
-plt.show()
+#ford_f150 = cars[cars['model'] == 'ford f-150']
+#ford_f150['age'].hist(bins = 100)
+#plt.title('Age distribution of Ford F150')
+#plt.xticks([0,10,20,30,40,50,60,70,80,90,100])
+#plt.show()
 
 
 # In[25]:
 
 
-ford_f150_age = ford_f150.groupby('age_category').median().sort_values('age')
-display(ford_f150_age)
+#ford_f150_age = ford_f150.groupby('age_category').median().sort_values('age')
+#display(ford_f150_age)
 
 
 # As expected the price of the trucks decrease as the age increased. A histogram will show the distribution of the age Ford f-150 trucks for sale. While the table above is not comprihensive of all categories in the dataset it quickly summarizes competitive prices at each age category. This information is useful when car shopping so I will include it in the web app with the option to pick a car model.  
 
 # In[52]:
-
+st.header('Market of used cars in US')
+st.write("""
+#### Filter the data below median info grouped by age by manufacturer """)
 
 st.header('Comparison of median values by age range')
 model_choice = cars['model'].unique()
@@ -287,7 +289,8 @@ filtered_type = cars[(cars.model == make_choice_mod) & (cars['days_listed'].isin
 
 
 # In[37]:
-
+st.write("""
+#### Filter the data below to see the ads by manufacturer """)
 
 show_table = st.checkbox('Show Cars for Sale')
 if show_table:
