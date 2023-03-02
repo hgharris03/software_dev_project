@@ -258,6 +258,8 @@ st.plotly_chart(fig2)
 
 #fig2
 
+st.write("""
+#### Filter the data below to see the ads by manufacturer """)
 
 # In[48]:
 manufacturer_choice = cars['model'].unique()
@@ -288,8 +290,6 @@ filtered_type = cars[(cars.model == make_choice_mod) & (cars['days_listed'].isin
 
 
 # In[37]:
-st.write("""
-#### Filter the data below to see the ads by manufacturer """)
 
 st.table(filtered_type)
 
