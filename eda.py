@@ -47,7 +47,7 @@ cars = pd.read_csv('vehicles_us.csv')
 
 cars['date_posted'] = pd.to_datetime(cars['date_posted'], format = '%Y-%m-%d')
 #print('min:', cars['date_posted'].min(), 
-      'max:', cars['date_posted'].max())
+#      'max:', cars['date_posted'].max())
 
 
 # I will be adding a column to categorize the age of the car. The dataset appears to be taken from 2019 so I will set the current year to 2019 to line up with timeline of the dataset.
@@ -64,7 +64,7 @@ def age_category(x):
     elif x>=20: return '>20'
     else: return 'Not Specified' 
 cars['age_category'] = cars['age'].apply(age_category)
-age_cat_sort = ['<5', '5-10', '10-20', '>20']
+
 
 
 # I will be looking in more detail of the dataframe to understand the missing values and data better. 
