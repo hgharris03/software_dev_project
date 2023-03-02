@@ -17,13 +17,13 @@ import numpy as np
 # In[2]:
 
 
-pip install pipenv
+#pip install pipenv
 
 
 # In[3]:
 
 
-pip install streamlit
+#pip install streamlit
 
 
 # In[4]:
