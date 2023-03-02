@@ -205,7 +205,7 @@ model_choice = cars['model'].unique()
 choice_mod = st.selectbox('Select model:', model_choice)
 model_choice_age = cars[cars['model'] == choice_mod].groupby('age_category').median().sort_values('age')
 st.table(model_choice_age)
-display(model_choice_age)
+
 
 
 # In[42]:
