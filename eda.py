@@ -257,6 +257,8 @@ st.plotly_chart(fig2)
 
 #fig2
 
+st.write("""
+#### Filter the data below to see the ads by manufacturer """)
 
 # In[48]:
 st.write("""
@@ -290,7 +292,6 @@ filtered_type = cars[(cars.model == make_choice_mod) & (cars['days_listed'].isin
 
 
 # In[37]:
-
 
 st.table(filtered_type)
 
