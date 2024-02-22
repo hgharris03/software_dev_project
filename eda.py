@@ -200,7 +200,6 @@ st.header('Market of used cars in US')
 st.write("""
 #### Filter the data below median info grouped by age by manufacturer """)
 
-st.header('Comparison of median values by age range')
 model_choice = cars['model'].unique()
 choice_mod = st.selectbox('Select model:', model_choice)
 model_choice_age = cars[cars['model'] == choice_mod].groupby('age_category').median().sort_values('age')
@@ -262,6 +261,9 @@ st.write("""
 #### Filter the data below to see the ads by manufacturer """)
 
 # In[48]:
+st.write("""
+#### Filter the data below to see the ads by manufacturer """)
+
 manufacturer_choice = cars['model'].unique()
 make_choice_mod = st.selectbox('Select model for ads:', manufacturer_choice)
 
@@ -286,7 +288,7 @@ actual_range = list(range(days_range[0], days_range[1] +1))
 # In[51]:
 
 
-filtered_type = cars[(cars.model == make_choice_mod) & (cars['days_listed'].isin(list(actual_range))) & cars.condition == make_condition]
+filtered_type = cars[(cars.model == make_choice_mod) & (cars['days_listed'].isin(list(actual_range))) & (cars.condition == make_condition)]
 
 
 # In[37]:
